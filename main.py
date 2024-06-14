@@ -10,7 +10,7 @@ class Product:
 # Lista para armazenar produtos
 products = []
 
-add = input(f'Você quer adicionar um produto?(s/n) ').strip.upper
+add = input(f'Você quer adicionar um produto?(s/n) ').strip().upper()
 
 while add == 'S':
     name = input('Nome do produto: ')
@@ -20,4 +20,7 @@ while add == 'S':
     product = Product(name, code, price)
     products.append(product) # Adiciona o produto a lista
 
-    add = input(f'Você quer adicionar outro produto?(s/n) ').strip.upper
+    add = input(f'Você quer adicionar outro produto?(s/n) ').strip().upper()
+
+for product in products:
+    product.display_info() # Mostra informações de todos os produtos
