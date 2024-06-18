@@ -7,20 +7,47 @@ class Product:
     def display_info(self):
         print(f'Nome: {self.name}, Código: {self.code}, Preço: R${self.price:.2f}')
 
-# Lista para armazenar produtos
-products = []
+class Menu:
+    def __init__(self):
+        self.products = [] # Array
+    
+    def add_product(self):
+        name = input('Nome do produto: ')
+        code = input('Código do produto: ')
+        price = float(input('Preço do produto: R$ '))
 
-add = input(f'Você quer adicionar um produto?(s/n) ').strip().upper()
+        product = Product(name, code, price)
+        self.products.append(product) # Adiciona produto a lista
+        print('Produto adicionado com sucesso!\n')
+    
+    def display_products(self):
+        if not self.products:
+            print('Não há produtos cadastrados.\n')
+        else:
+            for product in self.products: # Pecorre a lista de produtos(products)
+                product.display_info() # Mostra informações de cada produto
+            print()
 
-while add == 'S':
-    name = input('Nome do produto: ')
-    code = input('Código do produto: ')
-    price = float(input('Preço do produto:R$ '))
+    def show_menu(self):
+        print("Selecione uma opção:")
+        print("1 - Adicionar Novo Produto")
+        print("2 - Exibir Todos os Produtos")
+        print("3 - Sair")
+        return input('Opção: ')
 
-    product = Product(name, code, price)
-    products.append(product) # Adiciona o produto a lista
+    def main(self):
+        while True:
+            option = self.show_menu()
+            if option == '1':
+                self.add_product()
+            elif option == '2':
+                self.display_products()
+            elif option == '3':
+                print('Saindo do programa...')
+                break
+            else:
+                print('Opção inválida. Tente novamente.\n')
 
-    add = input(f'Você quer adicionar outro produto?(s/n) ').strip().upper()
-
-for product in products:
-    product.display_info() # Mostra informações de todos os produtos
+if __name__ == "__main__":
+    menu = Menu()
+    menu.main()
