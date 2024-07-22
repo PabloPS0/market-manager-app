@@ -1,3 +1,4 @@
+from modules.time_module import sleep
 class Product:
     def __init__(self, name, code, price):
         self.name = name
@@ -19,7 +20,18 @@ class Menu:
         product = Product(name, code, price)
         self.products.append(product) # Adiciona produto a lista
         print('Produto adicionado com sucesso!\n')
-    
+
+    def search_product(self):
+        code = input('Código: ')
+        for product in self.products:
+            if product.code == code:
+                print('Buscando produto...')
+                sleep(3)
+                print('Produto encontrado')
+                product.display_info()
+                return
+            print('Produto não encontrado')
+
     def display_products(self):
         if not self.products:
             print('Não há produtos cadastrados.\n')
@@ -32,7 +44,8 @@ class Menu:
         print("Selecione uma opção:")
         print("1 - Adicionar Novo Produto")
         print("2 - Exibir Todos os Produtos")
-        print("3 - Sair")
+        print("3 - Pesquisar Produto")
+        print("4 - Sair")
         return input('Opção: ')
 
     def main(self):
@@ -43,7 +56,10 @@ class Menu:
             elif option == '2':
                 self.display_products()
             elif option == '3':
+                self.search_product()
+            elif option == '4':
                 print('Saindo do programa...')
+                sleep(3)
                 break
             else:
                 print('Opção inválida. Tente novamente.\n')
