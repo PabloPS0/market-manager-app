@@ -1,4 +1,5 @@
 from modules.time_module import sleep
+import modules.list_util as lu
 class Product:
     def __init__(self, name, code, price):
         self.name = name
@@ -30,13 +31,13 @@ class Menu:
                 print('Produto encontrado')
                 product.display_info()
                 return
-            print('Produto não encontrado')
+        print('Produto não encontrado')
 
     def display_products(self):
         if not self.products:
             print('Não há produtos cadastrados.\n')
         else:
-            for product in self.products: # Pecorre a lista de produtos(products)
+            for product in self.products: # Percorre a lista de produtos(products)
                 product.display_info() # Mostra informações de cada produto
             print()
 
