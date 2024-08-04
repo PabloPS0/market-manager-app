@@ -22,16 +22,36 @@ class Menu:
         self.products.append(product) # Adiciona produto a lista
         print('Produto adicionado com sucesso!\n')
 
+    def remove_product(self):
+        code = input('Código do produto a ser removido: ')
+        for product in self.products:
+            if product.code == code:
+                product.display_info()
+                confirm = input('Você deseja realmente deletar esse produto?[s/n] ')
+                if confirm.lower() == 's':
+                    sleep(3)
+                    self.products.remove(product)
+                    print('Produto removido com sucesso!\n')
+                    print('Sistema atualizado:')
+                    product.display_info()
+                    print('\n')
+                elif confirm.lower == 'n':
+                    sleep(3)
+                    print('Operação cancelada.\n')
+                else:
+                    sleep(3)
+                    print('Opção inválida.\n')
+
     def search_product(self):
         code = input('Código: ')
         for product in self.products:
             if product.code == code:
                 print('Buscando produto...')
                 sleep(3)
-                print('Produto encontrado')
+                print('Produto encontrado.\n')
                 product.display_info()
                 return
-        print('Produto não encontrado')
+        print('Produto não encontrado.\n')
 
     def display_products(self):
         if not self.products:
@@ -46,7 +66,8 @@ class Menu:
         print("1 - Adicionar Novo Produto")
         print("2 - Exibir Todos os Produtos")
         print("3 - Pesquisar Produto")
-        print("4 - Sair")
+        print("4 - Deletar produto")
+        print("5 - Sair")
         return input('Opção: ')
 
     def main(self):
@@ -59,6 +80,8 @@ class Menu:
             elif option == '3':
                 self.search_product()
             elif option == '4':
+                self.remove_product()
+            elif option == '5':
                 print('Saindo do programa...')
                 sleep(3)
                 break
