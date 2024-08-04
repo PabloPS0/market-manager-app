@@ -86,7 +86,7 @@ class Menu:
                 sleep(3)
                 break
             else:
-                print('Opção inválida. Tente novamente.\n')
+                print('Opção inválida. Tente novamente.')
 
 if __name__ == "__main__":
     menu = Menu()
